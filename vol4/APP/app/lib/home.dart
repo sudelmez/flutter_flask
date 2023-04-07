@@ -16,7 +16,8 @@ class _HomeViewState extends State<HomeView> {
   String sendingData = '';
   String responsetext ='';
   List dcode =[];
-  final url = 'http://10.0.2.2:5000/list2'; 
+  String updatetext = '';
+  final url = 'http://10.0.2.2:5000/datas'; 
   
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,13 @@ class _HomeViewState extends State<HomeView> {
           print(decoded);
           print(decoded['list2']);
           datas = decoded['list2'] as List;
+          updatetext = decoded['title'] as String;
         });
+
+        final snackBar = SnackBar(
+            content:  Text(updatetext),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }, child: Text("Get Saved List")),
 
         Container(height: 400,

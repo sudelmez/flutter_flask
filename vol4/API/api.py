@@ -8,7 +8,7 @@ error = ['Daha önceden kayıtlı kullanıcı']
 deleted = ['Kişi silindi']
 sent = ['data sent']
 
-@app.route('/list2',methods= ['GET','POST','DELETE'])
+@app.route('/datas',methods= ['GET','POST','DELETE'])
 
 def data():
     global response
@@ -18,8 +18,8 @@ def data():
         datalist.append(request_data['list2'])
         response = datalist
         return " "
-        # for i in datalist:
-        #     if(datalist[i] != request_data['list2']):
+        # for i in datalist:   ???????????
+        #     if(i != request_data['list2']):
         #         datalist.append(request_data['list2'])
         #         response = datalist
         #         return " "
@@ -33,7 +33,7 @@ def data():
         return " "
         
     else: 
-        return jsonify({'list2':response})
+        return jsonify({'list2':response, 'title': "Datas Updated"})
 
 if(__name__ == "__main__"):
     app.debug = True
